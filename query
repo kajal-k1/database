@@ -1,0 +1,130 @@
+--to check the database that are existing in our system by default
+show database
+
+--if  we want to create the database 
+create database tablename;
+
+--if we want to delte the datase
+drop database tablename;
+
+--database changed
+use tablename
+
+--to see the table;
+show tables;
+
+--when we insert the data after that we check it by using the command
+select * from user 2;
+
+
+--creating table--
+create table user3(
+    id int,
+    name varchar(20),
+    email varchar(20),
+    password varchar(10),
+    createdat timestamp
+);
+
+create table user(
+    id int auto Increment primary Key,
+    name varchar(15) not null,
+    email varchar(19) not null unique,
+    password varchar(19) not null,
+    createdat timestamp default current_timestamp
+    );
+
+
+
+--inserting sample user
+insert into (id,name,email,password)values('kajal','kajal@gmail.com','45rt')
+
+select * from city
+--it will give the entire database of table;
+
+--to filter out we use where condition
+--comment
+select * fom city where countryCode='ind'
+--if we check only 5 results than we have to use
+select * from city where countryCode='ind' limit 4;
+--we have to  use equal to and single quote
+select * from  city where district='uttar pradesh'
+select * from city where district ='uttar pradesh' and population > 770000
+--to check multiple condition and using and operators
+
+
+---using in
+select * from city where district in ('uttr prdesh','madhya pradesh','goa')
+--using and 
+select * from city where district  not in ('uttar pradesh','madhya pradeesh',)
+--we are fetching the data other than uttar pradesh and madhya pradesh
+--using between
+select * from city where district ='uttar pradesh' and population between 350000 and 450000;
+--using like
+select * from city where  name like '%ia'
+--to check the city name ends with
+
+select * from city where name like '%ia' and district ='karnatka'
+
+select * from  city where name like 'm%'
+--tocheck the city name stat with
+
+select * from city where name like '%ng%'
+--to check  it contains or not
+
+select * from city where district ='karnataka' order by name desc limit 4;
+
+--if i want the name to be in alpabatically order than 
+-- if want in descending order we use desc;
+--if want in ascending order we use asc;
+
+--######## where is a keyword
+--order by is a keyword
+-- limit  is a keyword
+--* is used to select all coloums
+
+--if we want to select few columns than we use
+select name, population  from city where district='uttarpradesh'
+
+--aggregators
+--count(*)
+--count(*) is used to count number of rows or number of elements
+select count(*) from city where district= ' uttar pradesh';
+
+--max--
+--max is used to get the maximum value
+select max(population) from city where district='uttar pradesh'
+
+
+--group by--
+--select the number of countries based on the continent
+-- i want to group the country based on continent so we use group by
+select continent, count(*) as totalcountries from country
+group by continent
+
+--if we want to update the table than we use
+update user2 select
+name='kanika'
+where id=1;                     --user2 is table name
+
+--if you want to rename the table name 
+alter table user2 rename to myusers;
+
+--truncate table
+--if you want to delete the entire content from the tables
+truncate table myusers;
+--if you want to insert the data into the tables
+insert into myusers(id,name,email,password,phonenum)values(1,'kajal','kajal@gmail.com','123qwe','1234567');
+
+
+delete from myusers where email='kajal@gnmail.com'
+--if you want to delete the particular row of the table
+
+drop table myusers
+--used to delete the entire table
+
+--use of avg
+select avg(salary) as average_salary from user
+
+--use of sum
+select sum(salary) as sum_salary from user
